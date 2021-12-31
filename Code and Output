@@ -1,0 +1,63 @@
+CONSOLE OUTPUT/TESTING RESULTS:
+Welcome to the Dive Judging Calculator!
+Please enter the five judging scores for the dive:
+Dive 1: 6.5
+Dive 2: 7
+Dive 3: 5.5
+Dive 4: 7
+Dive 5: 6
+The results are in! Here were the 5 judges scores: 5.5 7 5.5 7 6
+The highest score of 7 and the lowest score of 5.5 were dropoped.
+The raw score for this dive is: 19.5
+
+C++ SOURCE CODE
+/******************************************************************************************************
+User input for diving scores placed into array, iterating through array to 
+establish sum and raw total.
+Scott Shaulis
+10-10-2020
+******************************************************************************************************/
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+
+const int arraySize = 5; //Establishing good habits.
+double judgingScore[arraySize];
+double& lowest = judgingScore[0]; //Strange how only 1 reference works, but 2 doesn't.
+double highest = judgingScore[0];
+double rawTotal, sum = 0;
+cout << "Welcome to the Dive Judging Calculator!" << endl <<
+"Please enter the five judging scores for the dive:" << endl << "Dive 1: ";
+
+cin >> judgingScore[0]; //sub zero, brr!, 1st element
+cout << "Dive 2: ";
+cin >> judgingScore[1]; //sub 1, 2nd element
+cout << "Dive 3: ";
+cin >> judgingScore[2]; //sub 2, 3rd element
+cout << "Dive 4: ";
+cin >> judgingScore[3]; //sub 3, 4th element
+cout << "Dive 5: ";
+cin >> judgingScore[4]; //sub 4, 5th element
+for (int i = 0; i < arraySize; i++) { //While array size is less 
+than sub-i.
+sum += judgingScore[i];
+rawTotal = sum - (highest + lowest);
+if (judgingScore[i] < lowest){
+lowest = judgingScore[i];
+ }
+if (judgingScore[i] > highest) {
+highest = judgingScore[i];
+   }
+}
+cout << "The results are in! Here were the 5 judges scores: " << 
+judgingScore[0] << " " <<
+judgingScore[1] << " " << judgingScore[2] << " " << 
+judgingScore[3] << " "
+<< judgingScore[4] << endl;
+cout << "The highest score of " << highest << " and the lowest score 
+of " << lowest << " were dropoped." << endl;
+cout << "The raw score for this dive is: " << rawTotal << endl;
+return 0;
+}
